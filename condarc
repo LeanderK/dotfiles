@@ -1,0 +1,7 @@
+pkgs_dirs: 
+  - OTHERPATH/pkgs
+  - ~/.conda/pkgs
+
+envs_dirs: 
+  - OTHERPATH/pkgs
+  - ~/.conda/envs

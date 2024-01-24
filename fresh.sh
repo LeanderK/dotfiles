@@ -6,7 +6,7 @@
 # install oh my zsh
 echo 'Install oh-my-zsh'
 rm -rf $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended --keep-zshrc
 
 # zsh stuff
 echo 'Install powerlevel10k'
