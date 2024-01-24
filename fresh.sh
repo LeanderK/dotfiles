@@ -21,14 +21,22 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.
 echo 'Install zsh autoupdate'
 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/autoupdate
 
-echo 'symlink dotfiles'
-if [ -f $HOME/.zshrc ]; then
+echo 'setup dotfiles'
+if [[ -f $HOME/.zshrc && ! -L $HOME/.zshrc ]]; then
    mv $HOME/.zshrc $HOME/.zshrc.old
 fi
-ln -s $PWD/zshrc $HOME/.zshrc
+if [[ -f $HOME/.zshrc && -L $HOME/.zshrc ]]; then
+   rm $HOME/.zshrc
+fi
+cp $PWD/zshrc $HOME/.zshrc
+sed -i -e "s+DOTFILES_LOCATION+$PWD+g" $HOME/.zshrc
+#ln -s $PWD/zshrc $HOME/.zshrc
 
-if [ -f $HOME/.p10k.zsh ]; then
+if [[ -f $HOME/.p10k.zsh && ! -L $HOME/.p10k.zsh ]]; then
    mv $HOME/.p10k.zsh $HOME/.p10k.zsh.old
+fi
+if [[ -f $HOME/.p10k.zsh && -L $HOME/.p10k.zsh ]]; then
+   rm $HOME/.p10k.zsh
 fi
 ln -s $PWD/p10k.zsh $HOME/.p10k.zsh
 
