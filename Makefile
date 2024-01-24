@@ -4,7 +4,7 @@ zsh_without_root:
 		@echo "replacing bash_profile"
 		if [ -f ${HOME}/.bash_profile ]; then \
 			mv ${HOME}/.bash_profile ${HOME}/.bash_profile.old \
-		fix
+		fi
 		ln -s bash_profile ${HOME}/.bash_profile
 
 fresh:

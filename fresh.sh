@@ -24,10 +24,10 @@ git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/pl
 echo 'symlink dotfiles'
 if [ -f $HOME/.zshrc ]; then
    mv $HOME/.zshrc $HOME/.zshrc.old
-fix
+fi
 ln -s zshrc $HOME/.zshrc
 
 if [ -f $HOME/.p10k.zsh ]; then
    mv $HOME/.p10k.zsh $HOME/.p10k.zsh.old
-fix
+fi
 ln -s p10k.zsh $HOME/.p10k.zsh
