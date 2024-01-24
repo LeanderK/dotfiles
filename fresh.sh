@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Make ZSH the default shell
-chsh -s $(which zsh)
+# # Make ZSH the default shell
+# chsh -s $(which zsh)
 
 # install oh my zsh
 echo 'Install oh-my-zsh'
