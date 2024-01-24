@@ -21,6 +21,13 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 echo 'Install zsh autoupdate'
 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
 
+echo 'symlink dotfiles'
 if [ -f $HOME/.zshrc ]; then
-   mv blah destination
-fi
+   mv $HOME/.zshrc $HOME/.zshrc.old
+fix
+ln -s zshrc $HOME/.zshrc
+
+if [ -f $HOME/.p10k.zsh ]; then
+   mv $HOME/.p10k.zsh $HOME/.p10k.zsh.old
+fix
+ln -s p10k.zsh $HOME/.p10k.zsh
