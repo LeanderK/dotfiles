@@ -21,3 +21,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 echo 'Install zsh autoupdate'
 git clone https://github.com/TamCore/autoupdate-oh-my-zsh-plugins $ZSH_CUSTOM/plugins/autoupdate
 
+if [ -f $HOME/.zshrc ]; then
+   mv blah destination
+fi

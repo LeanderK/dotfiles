@@ -128,4 +128,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+# Customize to your needs...
+if [ -f $HOME/.zshrc.local ]; then
+    source $HOME/.zshrc.local
+fi
+
 alias tkinit="kinit s2626206@INF.ED.AC.UK -k -t s2626206.keyta"
