@@ -3,5 +3,5 @@ pkgs_dirs:
   - ~/.conda/pkgs
 
 envs_dirs: 
-  - OTHERPATH/pkgs
+  - OTHERPATH/envs
   - ~/.conda/envs
