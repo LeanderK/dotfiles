@@ -5,6 +5,9 @@
 #if not move them to the specified directory
 #and symlink them
 
+#useful if you're working in a server enviroment with few, slow shared home-dir
+#and fast local storage
+
 
 folder_to_move_to="$1"
 
