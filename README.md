@@ -1,5 +1,5 @@
 # My dotfiles
-run `make fres`. See makefile for more options. 
+run `make fresh`. See makefile for more options. 
 
 ## setting up without root access:
 if you have conda (and are on a server):
