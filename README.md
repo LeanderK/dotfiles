@@ -1,6 +1,8 @@
 # My dotfiles
 run `make fresh`. See makefile for more options. 
 
+Also a collection of useful scripts.
+
 ## setting up without root access:
 if you have conda (and are on a server):
 ```
