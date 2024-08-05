@@ -43,3 +43,21 @@ ln -s $PWD/p10k.zsh $HOME/.p10k.zsh
 echo 'setting up git'
 git config --global user.email "Leander.Kurscheidt@gmx.de"
 git config --global user.name "Leander Kurscheidt"
+
+# Install cona-zsh integration
+
+# Check if conda is installed
+if command -v conda &> /dev/null
+then
+   echo "conda is installed."
+   conda init zsh
+else
+   # Check if /opt/conda/bin exists
+   if [ -d "/opt/conda/bin" ]; then
+      echo "/opt/conda/bin exists."
+      source /opt/conda/bin/activate
+      conda init zsh
+   else
+      echo "conda not found. Please install manually with conda init zsh."
+   fi
+fi
