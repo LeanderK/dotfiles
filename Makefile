@@ -12,6 +12,7 @@ fresh:
 	./fresh.sh
 
 # offload_cache: argument path is the path to the new chache location
+# use via `make offload_cache path=/path/to/new/cache`
 offload_cache:
 	@echo "offloading cache"; \
 	./offload_cache.sh ${path}

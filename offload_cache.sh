@@ -19,5 +19,6 @@ if [ -d "$HOME/.cache" ] && [ ! -L "$HOME/.cache" ]; then
         # add it to zshrc
         if ! grep -q "$offload_cache_check_path" ~/.zshrc; then
             echo "$offload_cache_check_path $folder_to_move_to" >> ~/.zshrc
+        fi
     fi
 fi
