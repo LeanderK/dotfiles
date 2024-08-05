@@ -10,3 +10,8 @@ zsh_without_root:
 fresh:
 	@echo "fresh install"; \
 	./fresh.sh
+
+# offload_cache: argument path is the path to the new chache location
+offload_cache:
+	@echo "offloading cache"; \
+	./offload_cache.sh ${path}
