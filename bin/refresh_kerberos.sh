@@ -60,10 +60,17 @@ if [ -z "$remaining_time" ]; then
     exit 1
 fi
 
+# Run tkinit asynchronously with a timeout
+run_tkinit_async() {
+    echo "🔄 Running tkinit asynchronously..."
+    timeout 30s tkinit &> "$HOME/.kerberos_refresh.log" &
+    echo "✅ tkinit is running in the background. Logs: $HOME/.kerberos_refresh.log"
+}
+
 # Refresh if expiring within 1.5 hours (5400 seconds)
 if [ "$remaining_time" -lt 5400 ]; then
     echo "🔄 Refreshing Kerberos ticket (expiring soon)..."
-    tkinit
+    run_tkinit_async
 else
     echo "✅ Kerberos ticket is valid and does not need refreshing."
 fi
