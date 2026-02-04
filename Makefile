@@ -9,6 +9,10 @@ zsh_without_root:
 
 fresh:
 	@echo "fresh install"; \
+	./fresh.sh --force-zshrc
+
+update:
+	@echo "updating dotfiles"; \
 	./fresh.sh
 
 # offload_cache: argument path is the path to the new chache location
@@ -16,6 +20,9 @@ fresh:
 offload_cache:
 	@echo "offloading cache"; \
 	./offload_cache.sh ${path}
+
+########### edinburgh uni specific kerberos setup ###########
+########### not working yet ###########
 
 # Validate tkinit presence
 validate_tkinit:
@@ -31,14 +38,14 @@ validate_tkinit:
 setup_login:
 	@echo "🔄 Setting up Kerberos refresh on login..."; \
 	if ! grep -q "refresh_kerberos.sh" $(HOME)/.zshrc.local; then \
-		echo "bash $(PWD)/bin/refresh_kerberos.sh" >> $(HOME)/.zshrc.local; \
+		echo "bash $(PWD)/edinburgh/bin/refresh_kerberos.sh" >> $(HOME)/.zshrc.local; \
 	fi
 	@echo "✅ Kerberos refresh setup for login."
 
 # # Setup Kerberos refresh on network events
 # setup_network:
 # 	@echo "🔄 Setting up Kerberos refresh on network events..."; \
-# 	echo "[Unit]\nDescription=Run refresh_kerberos on network events\n\n[Service]\nExecStart=$(PWD)/bin/refresh_kerberos.sh\n\n[Install]\nWantedBy=network-online.target" > /etc/systemd/system/refresh_kerberos_network.service; \
+# 	echo "[Unit]\nDescription=Run refresh_kerberos on network events\n\n[Service]\nExecStart=$(PWD)/edinburgh/bin/refresh_kerberos.sh\n\n[Install]\nWantedBy=network-online.target" > /etc/systemd/system/refresh_kerberos_network.service; \
 # 	systemctl enable refresh_kerberos_network.service; \
 # 	systemctl start refresh_kerberos_network.service
 # 	@echo "✅ Kerberos refresh setup for network events."
@@ -47,7 +54,7 @@ setup_login:
 setup_periodic:
 	@echo "🔄 Setting up periodic Kerberos refresh..."; \
 	echo "[Unit]\nDescription=Run refresh_kerberos periodically\n\n[Timer]\nOnCalendar=hourly\n\n[Install]\nWantedBy=timers.target" > /etc/systemd/system/refresh_kerberos.timer; \
-	echo "[Unit]\nDescription=Run refresh_kerberos periodically\n\n[Service]\nExecStart=$(PWD)/bin/refresh_kerberos.sh" > /etc/systemd/system/refresh_kerberos.service; \
+	echo "[Unit]\nDescription=Run refresh_kerberos periodically\n\n[Service]\nExecStart=$(PWD)/edinburgh/bin/refresh_kerberos.sh" > /etc/systemd/system/refresh_kerberos.service; \
 	systemctl enable refresh_kerberos.timer; \
 	systemctl start refresh_kerberos.timer
 	@echo "✅ Periodic Kerberos refresh setup."
