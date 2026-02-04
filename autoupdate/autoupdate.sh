@@ -24,15 +24,6 @@ fi
 TIMESTAMP_FILE="$DOTFILES_DIR/autoupdate/.last_update"
 ONE_MONTH_SECONDS=$((30 * 24 * 60 * 60))  # 30 days in seconds
 
-# Helper to exit/return based on how script was invoked
-_exit_or_return() {
-    if [[ $SOURCED -eq 1 ]]; then
-        return "$1"
-    else
-        exit "$1"
-    fi
-}
-
 # Check if it's time to update
 if [[ -f "$TIMESTAMP_FILE" ]]; then
     LAST_UPDATE=$(cat "$TIMESTAMP_FILE")
@@ -45,7 +36,11 @@ if [[ -f "$TIMESTAMP_FILE" ]]; then
             DAYS_LEFT=$(( (ONE_MONTH_SECONDS - TIME_DIFF) / 86400 ))
             echo "[dotfiles] Last checked recently. Next check in ~$DAYS_LEFT days."
         fi
-        _exit_or_return 0
+        if [[ $SOURCED -eq 1 ]]; then
+            return 0
+        else
+            exit 0
+        fi
     fi
 fi
 
@@ -54,7 +49,13 @@ if [[ $VERBOSE -eq 1 ]]; then
 fi
 
 # Time to update - navigate to dotfiles directory
-cd "$DOTFILES_DIR" || _exit_or_return 1
+if ! cd "$DOTFILES_DIR"; then
+    if [[ $SOURCED -eq 1 ]]; then
+        return 1
+    else
+        exit 1
+    fi
+fi
 
 # Store the current HEAD commit
 BEFORE_COMMIT=$(git rev-parse HEAD 2>/dev/null)
@@ -62,7 +63,11 @@ BEFORE_COMMIT=$(git rev-parse HEAD 2>/dev/null)
 if [[ -z "$BEFORE_COMMIT" ]]; then
     # Not a git repo, error
     echo "[dotfiles] ERROR: Not a git repository"
-    _exit_or_return 1
+    if [[ $SOURCED -eq 1 ]]; then
+        return 1
+    else
+        exit 1
+    fi
 fi
 
 # Pull updates quietly
