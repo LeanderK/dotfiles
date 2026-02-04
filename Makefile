@@ -21,7 +21,7 @@ update:
 # use via `make offload_cache path=/path/to/new/cache`
 offload_cache:
 	@echo "offloading cache"; \
-	./offload_cache.sh ${path}
+	./offload/offload_cache.sh ${path}
 
 ########### edinburgh uni specific kerberos setup ###########
 ########### not working yet ###########
