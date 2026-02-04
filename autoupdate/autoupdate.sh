@@ -24,6 +24,11 @@ fi
 TIMESTAMP_FILE="$DOTFILES_DIR/autoupdate/.last_update"
 ONE_MONTH_SECONDS=$((30 * 24 * 60 * 60))  # 30 days in seconds
 
+# print the file path for debugging in verbose mode
+if [[ $VERBOSE -eq 1 ]]; then
+    echo "[dotfiles] Timestamp file: $TIMESTAMP_FILE"
+fi
+
 # Check if it's time to update
 if [[ -f "$TIMESTAMP_FILE" ]]; then
     LAST_UPDATE=$(cat "$TIMESTAMP_FILE")
