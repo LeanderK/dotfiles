@@ -44,9 +44,9 @@ if [[ -f "$TIMESTAMP_FILE" ]]; then
     fi
 fi
 
-if [[ $VERBOSE -eq 1 ]]; then
-    echo "[dotfiles] checking for dotfiles updates..."
-fi
+
+echo "[dotfiles] checking for dotfiles updates..."
+
 
 # Time to update - navigate to dotfiles directory
 if ! cd "$DOTFILES_DIR"; then
