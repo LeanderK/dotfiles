@@ -1,5 +1,5 @@
 # My dotfiles
-run `make fresh`. See makefile for more options. 
+run `make fresh`. See makefile for more options. This will autoupdate every month.
 
 Also a collection of useful scripts.
 
