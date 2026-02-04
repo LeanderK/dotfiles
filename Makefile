@@ -9,7 +9,9 @@ zsh_without_root:
 
 fresh:
 	@echo "fresh install"; \
-	./fresh.sh --force-zshrc
+	./fresh.sh --force-zshrc \
+	echo "sourcing .zshrc"; \
+	source ${HOME}/.zshrc
 
 update:
 	@echo "updating dotfiles"; \
